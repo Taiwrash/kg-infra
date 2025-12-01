@@ -25,11 +25,6 @@ jobs:
             Title: ${{ github.event.issue.title }}
             Body: ${{ github.event.issue.body }}
 
-      - name: Authenticate GitHub CLI
-        run: gh auth login --with-token <<< "$GH_TOKEN"
-        env:
-          GH_TOKEN: ${{ secrets.FGITHUB_TOKEN }}
-
       - name: Comment with AI summary
         run: |
           gh issue comment "$ISSUE_NUMBER" \
