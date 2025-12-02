@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: taiwrash-portfolio
+  name: portfolio
   labels:
     app: taiwrash-portfolio
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: taiwrash-portfolio
