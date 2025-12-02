@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taiwrash-portfolio
+  labels:
+    app: taiwrash-portfolio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taiwrash-portfolio
+  template:
+    metadata:
+      labels:
+        app: taiwrash-portfolio
+    spec:
+      containers:
+        - name: portfolio
+          image: taiwrash/taiwrash-portfolio:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: IfNotPresent
+          # Optionally, you can set resource requests/limits:
+          # resources:
+          #   requests:
+          #     cpu: "100m"
+          #     memory: "128Mi"
+          #   limits:
+          #     cpu: "500m"
+          #     memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-service
+  labels:
+    app: taiwrash-portfolio
+spec:
+  selector:
+    app: taiwrash-portfolio
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+      # NodePort optional range (e.g., 30000–32767)
+      nodePort: 30080
