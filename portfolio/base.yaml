@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: taiwrash/taiwrash-portfolio:latest
+          image: taiwrash/portfolio:latest
           ports:
             - containerPort: 80
           imagePullPolicy: IfNotPresent
