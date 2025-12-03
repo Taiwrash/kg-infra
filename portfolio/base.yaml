@@ -42,5 +42,4 @@ spec:
   ports:
     - port: 80
       targetPort: 3000
-      # NodePort optional range (e.g., 30000–32767)
       nodePort: 30080
